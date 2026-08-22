@@ -1,0 +1,319 @@
+---
+import { ArrowUpRight } from "lucide-astro";
+
+import { about } from "../data/about";
+---
+
+<section
+  class="about-preview"
+  id="about"
+>
+  <div class="container">
+
+    <div class="about-layout">
+
+      <!-- COLONNE GAUCHE -->
+      <div class="about-heading">
+
+        <div class="section-eyebrow">
+          <span></span>
+          {about.eyebrow}
+        </div>
+
+        <h2>
+          {about.title}
+        </h2>
+
+      </div>
+
+
+      <!-- COLONNE DROITE -->
+      <div class="about-content">
+
+        <p class="about-introduction">
+          {about.introduction}
+        </p>
+
+        <p class="about-description">
+          {about.description}
+        </p>
+
+
+        <!-- POINTS FORTS -->
+        <div class="about-highlights">
+
+          {
+            about.highlights.map((item) => (
+              <div class="highlight">
+
+                <strong>
+                  {item.value}
+                </strong>
+
+                <span>
+                  {item.label}
+                </span>
+
+              </div>
+            ))
+          }
+
+        </div>
+
+
+        <!-- LIEN -->
+        <a
+          href={about.link.href}
+          class="about-link"
+        >
+          {about.link.label}
+
+          <ArrowUpRight size={17} />
+
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<style>
+
+  .about-preview {
+    padding-block: var(--space-24);
+
+    border-top: 1px solid var(--color-border);
+  }
+
+
+  /* ================================
+     LAYOUT
+  ================================= */
+
+  .about-layout {
+    display: grid;
+
+    grid-template-columns:
+      .9fr 1.1fr;
+
+    gap: var(--space-16);
+
+    align-items: start;
+  }
+
+
+  /* ================================
+     EYEBROW
+  ================================= */
+
+  .section-eyebrow {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: .55rem;
+
+    margin-bottom: 1.25rem;
+
+    color: var(--color-primary);
+
+    font-family: var(--font-mono);
+
+    font-size: var(--text-xs);
+
+    font-weight: 700;
+
+    letter-spacing: .08em;
+  }
+
+  .section-eyebrow span {
+    width: 24px;
+
+    height: 2px;
+
+    background: var(--color-primary);
+
+    border-radius: 999px;
+  }
+
+
+  /* ================================
+     TITLE
+  ================================= */
+
+  .about-heading h2 {
+    max-width: 700px;
+
+    font-size: clamp(
+      2.5rem,
+      5vw,
+      4.5rem
+    );
+
+    line-height: 1;
+
+    letter-spacing: -.055em;
+  }
+
+
+  /* ================================
+     CONTENT
+  ================================= */
+
+  .about-content {
+    max-width: 650px;
+  }
+
+  .about-introduction {
+    color: var(--color-text);
+
+    font-size: var(--text-xl);
+
+    line-height: 1.65;
+
+    font-weight: 500;
+  }
+
+  .about-description {
+    margin-top: 1.25rem;
+
+    color: var(--color-text-muted);
+
+    font-size: var(--text-base);
+
+    line-height: 1.85;
+  }
+
+
+  /* ================================
+     HIGHLIGHTS
+  ================================= */
+
+  .about-highlights {
+    display: grid;
+
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 1px;
+
+    margin-top: 2rem;
+
+    overflow: hidden;
+
+    background: var(--color-border);
+
+    border: 1px solid var(--color-border);
+
+    border-radius: var(--radius-lg);
+  }
+
+  .highlight {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: .35rem;
+
+    padding: 1.25rem;
+
+    background: var(--color-background);
+
+    transition:
+      background .25s ease;
+  }
+
+  .highlight:hover {
+    background: var(--color-surface);
+  }
+
+  .highlight strong {
+    color: var(--color-primary);
+
+    font-size: var(--text-xl);
+
+    letter-spacing: -.02em;
+  }
+
+  .highlight span {
+    color: var(--color-text-muted);
+
+    font-size: var(--text-sm);
+  }
+
+
+  /* ================================
+     LINK
+  ================================= */
+
+  .about-link {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: .5rem;
+
+    margin-top: 2rem;
+
+    padding-bottom: .35rem;
+
+    color: var(--color-text);
+
+    border-bottom: 1px solid
+      var(--color-border);
+
+    font-size: var(--text-sm);
+
+    font-weight: 700;
+
+    transition:
+      color .2s ease,
+      border-color .2s ease;
+  }
+
+  .about-link:hover {
+    color: var(--color-primary);
+
+    border-color: var(--color-primary);
+  }
+
+
+  /* ================================
+     RESPONSIVE
+  ================================= */
+
+  @media (max-width: 900px) {
+
+    .about-layout {
+      grid-template-columns: 1fr;
+
+      gap: 3rem;
+    }
+
+    .about-content {
+      max-width: 750px;
+    }
+
+  }
+
+
+  @media (max-width: 600px) {
+
+    .about-preview {
+      padding-block: var(--space-16);
+    }
+
+    .about-heading h2 {
+      font-size: 2.5rem;
+    }
+
+    .about-highlights {
+      grid-template-columns: 1fr;
+    }
+
+  }
+
+</style>

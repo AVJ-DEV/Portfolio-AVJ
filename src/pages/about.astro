@@ -1,0 +1,1239 @@
+---
+import Layout from "../layouts/Layout.astro";
+import {
+  ArrowUpRight,
+  BriefcaseBusiness,
+  GraduationCap,
+  Code2,
+  Languages,
+  MapPin,
+  Mail,
+  Github,
+} from "lucide-astro";
+
+import { profile } from "../data/profile";
+---
+
+<Layout
+  title="À propos | Venceslas Jean de Dieu AGBEMATCHI"
+  description="Parcours, formation, expériences et compétences de Venceslas Jean de Dieu AGBEMATCHI."
+>
+
+  <main>
+
+    <!-- =========================================
+         HERO ABOUT
+    ========================================== -->
+
+    <section class="about-hero">
+
+      <div class="container">
+
+        <div class="section-eyebrow">
+          <span></span>
+          {profile.eyebrow}
+        </div>
+
+        <div class="hero-grid">
+
+          <div>
+
+            <h1>
+              {profile.title}
+            </h1>
+
+          </div>
+
+          <div class="hero-description">
+
+            <p class="introduction">
+              {profile.introduction}
+            </p>
+
+            <p>
+              {profile.description}
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================================
+         IDENTITÉ
+    ========================================== -->
+
+    <section class="identity-section">
+
+      <div class="container">
+
+        <div class="identity-card">
+
+          <div class="identity-main">
+
+            <span class="identity-label">
+              PROFIL
+            </span>
+
+            <h2>
+              {profile.identity.name}
+            </h2>
+
+            <p>
+              {profile.identity.profession}
+            </p>
+
+          </div>
+
+
+          <div class="identity-details">
+
+            <div>
+              <MapPin size={17} />
+
+              <span>
+                {profile.identity.location}
+              </span>
+            </div>
+
+            <div>
+              <Mail size={17} />
+
+              <a
+                href={`mailto:${profile.identity.email}`}
+              >
+                {profile.identity.email}
+              </a>
+            </div>
+
+            <div>
+              <Github size={17} />
+
+              <a
+                href={profile.identity.github}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                github.com/AVJ-DEV
+              </a>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================================
+         EXPÉRIENCES
+    ========================================== -->
+
+    <section
+      class="content-section"
+      id="experience"
+    >
+
+      <div class="container">
+
+        <div class="section-heading">
+
+          <div class="section-eyebrow">
+            <span></span>
+            EXPÉRIENCES
+          </div>
+
+          <h2>
+            Mon parcours professionnel
+          </h2>
+
+          <p>
+            Des expériences qui m'ont permis de développer
+            mes compétences techniques, pédagogiques,
+            organisationnelles et professionnelles.
+          </p>
+
+        </div>
+
+
+        <div class="timeline">
+
+          {
+            profile.experiences.map((experience, index) => (
+
+              <article class="timeline-item">
+
+                <div class="timeline-marker">
+                  <span></span>
+                </div>
+
+                <div class="timeline-content">
+
+                  <div class="timeline-meta">
+
+                    <span>
+                      {experience.period}
+                    </span>
+
+                    <span>
+                      {experience.type}
+                    </span>
+
+                  </div>
+
+                  <h3>
+                    {experience.title}
+                  </h3>
+
+                  <strong>
+                    {experience.organization}
+                  </strong>
+
+                  <div class="location">
+                    <MapPin size={14} />
+                    {experience.location}
+                  </div>
+
+                  <p>
+                    {experience.description}
+                  </p>
+
+                </div>
+
+              </article>
+
+            ))
+          }
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================================
+         FORMATION
+    ========================================== -->
+
+    <section
+      class="content-section education-section"
+      id="formation"
+    >
+
+      <div class="container">
+
+        <div class="section-heading">
+
+          <div class="section-eyebrow">
+            <span></span>
+            FORMATION
+          </div>
+
+          <h2>
+            Formation & diplômes
+          </h2>
+
+        </div>
+
+
+        <div class="education-grid">
+
+          {
+            profile.education.map((item, index) => (
+
+              <article class="education-card">
+
+                <div class="card-number">
+                  0{index + 1}
+                </div>
+
+                <div class="education-icon">
+                  <GraduationCap
+                    size={21}
+                  />
+                </div>
+
+                <span class="period">
+                  {item.period}
+                </span>
+
+                <h3>
+                  {item.title}
+                </h3>
+
+                <strong>
+                  {item.institution}
+                </strong>
+
+                <p>
+                  {item.description}
+                </p>
+
+              </article>
+
+            ))
+          }
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================================
+         COMPÉTENCES
+    ========================================== -->
+
+    <section
+      class="content-section"
+      id="competences"
+    >
+
+      <div class="container">
+
+        <div class="section-heading">
+
+          <div class="section-eyebrow">
+            <span></span>
+            COMPÉTENCES
+          </div>
+
+          <h2>
+            Technologies & outils
+          </h2>
+
+          <p>
+            Les technologies et outils que j'utilise
+            dans mes projets et mon activité informatique.
+          </p>
+
+        </div>
+
+
+        <div class="skills-grid">
+
+          {
+            profile.skills.map((skill, index) => (
+
+              <article class="skill-card">
+
+                <div class="skill-header">
+
+                  <div class="skill-icon">
+                    <Code2 size={20} />
+                  </div>
+
+                  <span>
+                    0{index + 1}
+                  </span>
+
+                </div>
+
+                <h3>
+                  {skill.category}
+                </h3>
+
+                <div class="skill-list">
+
+                  {
+                    skill.items.map((item) => (
+                      <span>
+                        {item}
+                      </span>
+                    ))
+                  }
+
+                </div>
+
+              </article>
+
+            ))
+          }
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================================
+         LANGUES
+    ========================================== -->
+
+    <section class="content-section languages-section">
+
+      <div class="container">
+
+        <div class="languages-layout">
+
+          <div class="section-heading">
+
+            <div class="section-eyebrow">
+              <span></span>
+              LANGUES
+            </div>
+
+            <h2>
+              Communication
+            </h2>
+
+          </div>
+
+
+          <div class="languages-list">
+
+            {
+              profile.languages.map((language) => (
+
+                <div class="language">
+
+                  <div class="language-name">
+
+                    <Languages size={17} />
+
+                    <strong>
+                      {language.name}
+                    </strong>
+
+                  </div>
+
+                  <span>
+                    {language.level}
+                  </span>
+
+                </div>
+
+              ))
+            }
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================================
+         PROJET PHARE
+    ========================================== -->
+
+    <section class="project-highlight">
+
+      <div class="container">
+
+        <div class="project-highlight-card">
+
+          <div>
+
+            <div class="section-eyebrow">
+              <span></span>
+              PROJET PHARE
+            </div>
+
+            <h2>
+              {profile.projectHighlight.title}
+            </h2>
+
+            <p>
+              {profile.projectHighlight.description}
+            </p>
+
+          </div>
+
+          <a
+            href={profile.projectHighlight.href}
+            class="project-link"
+          >
+            Découvrir EcoTrack
+            <ArrowUpRight size={18} />
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+</Layout>
+
+
+<style>
+
+  /* =========================================
+     GENERAL
+  ========================================== */
+
+  .about-hero {
+    padding-block:
+      clamp(6rem, 12vw, 10rem)
+      var(--space-24);
+  }
+
+  .section-eyebrow {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: .55rem;
+
+    margin-bottom: 1.25rem;
+
+    color: var(--color-primary);
+
+    font-family: var(--font-mono);
+
+    font-size: var(--text-xs);
+
+    font-weight: 700;
+
+    letter-spacing: .08em;
+  }
+
+  .section-eyebrow span {
+    width: 24px;
+    height: 2px;
+
+    background: var(--color-primary);
+
+    border-radius: 999px;
+  }
+
+
+  /* =========================================
+     HERO
+  ========================================== */
+
+  .hero-grid {
+    display: grid;
+
+    grid-template-columns:
+      1.1fr .9fr;
+
+    gap: var(--space-16);
+
+    align-items: end;
+  }
+
+  .hero-grid h1 {
+    max-width: 850px;
+
+    font-size: clamp(
+      3rem,
+      7vw,
+      6.5rem
+    );
+
+    line-height: .94;
+
+    letter-spacing: -.065em;
+  }
+
+  .hero-description {
+    max-width: 600px;
+  }
+
+  .hero-description p {
+    color: var(--color-text-muted);
+
+    line-height: 1.8;
+  }
+
+  .hero-description .introduction {
+    color: var(--color-text);
+
+    font-size: var(--text-xl);
+
+    line-height: 1.6;
+
+    font-weight: 500;
+  }
+
+  .hero-description p + p {
+    margin-top: 1rem;
+  }
+
+
+  /* =========================================
+     IDENTITY
+  ========================================== */
+
+  .identity-section {
+    padding-bottom: var(--space-16);
+  }
+
+  .identity-card {
+    display: grid;
+
+    grid-template-columns:
+      1fr 1fr;
+
+    gap: 3rem;
+
+    padding: 2rem;
+
+    background: var(--color-surface);
+
+    border: 1px solid var(--color-border);
+
+    border-radius: var(--radius-xl);
+  }
+
+  .identity-label {
+    color: var(--color-primary);
+
+    font-family: var(--font-mono);
+
+    font-size: .65rem;
+
+    font-weight: 700;
+
+    letter-spacing: .08em;
+  }
+
+  .identity-main h2 {
+    margin-top: .65rem;
+
+    font-size: var(--text-3xl);
+
+    letter-spacing: -.04em;
+  }
+
+  .identity-main p {
+    margin-top: .4rem;
+
+    color: var(--color-text-muted);
+  }
+
+  .identity-details {
+    display: flex;
+
+    justify-content: center;
+
+    flex-direction: column;
+
+    gap: .8rem;
+  }
+
+  .identity-details > div {
+    display: flex;
+
+    align-items: center;
+
+    gap: .75rem;
+
+    color: var(--color-text-muted);
+
+    font-size: var(--text-sm);
+  }
+
+  .identity-details svg {
+    flex-shrink: 0;
+
+    color: var(--color-primary);
+  }
+
+  .identity-details a {
+    color: inherit;
+
+    transition: color .2s ease;
+  }
+
+  .identity-details a:hover {
+    color: var(--color-primary);
+  }
+
+
+  /* =========================================
+     SECTIONS
+  ========================================== */
+
+  .content-section {
+    padding-block: var(--space-24);
+
+    border-top: 1px solid var(--color-border);
+  }
+
+  .section-heading {
+    max-width: 800px;
+
+    margin-bottom: var(--space-12);
+  }
+
+  .section-heading h2 {
+    font-size: clamp(
+      2.5rem,
+      5vw,
+      4.5rem
+    );
+
+    line-height: 1;
+
+    letter-spacing: -.055em;
+  }
+
+  .section-heading > p {
+    max-width: 650px;
+
+    margin-top: 1rem;
+
+    color: var(--color-text-muted);
+
+    font-size: var(--text-lg);
+
+    line-height: 1.8;
+  }
+
+
+  /* =========================================
+     TIMELINE
+  ========================================== */
+
+  .timeline {
+    position: relative;
+
+    max-width: 950px;
+
+    margin-inline: auto;
+  }
+
+  .timeline::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    bottom: 0;
+    left: 10px;
+
+    width: 1px;
+
+    background: var(--color-border);
+  }
+
+  .timeline-item {
+    position: relative;
+
+    display: grid;
+
+    grid-template-columns: 22px 1fr;
+
+    gap: 2rem;
+
+    padding-bottom: 3rem;
+  }
+
+  .timeline-item:last-child {
+    padding-bottom: 0;
+  }
+
+  .timeline-marker {
+    position: relative;
+
+    z-index: 1;
+
+    display: flex;
+
+    justify-content: center;
+  }
+
+  .timeline-marker span {
+    width: 21px;
+    height: 21px;
+
+    margin-top: .2rem;
+
+    background: var(--color-background);
+
+    border: 2px solid var(--color-primary);
+
+    border-radius: 50%;
+  }
+
+  .timeline-content {
+    padding: 1.5rem;
+
+    background: var(--color-surface);
+
+    border: 1px solid var(--color-border);
+
+    border-radius: var(--radius-lg);
+
+    transition:
+      transform .25s ease,
+      border-color .25s ease;
+  }
+
+  .timeline-content:hover {
+    transform: translateX(4px);
+
+    border-color:
+      rgba(29, 185, 84, .3);
+  }
+
+  .timeline-meta {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: .75rem;
+
+    color: var(--color-primary);
+
+    font-family: var(--font-mono);
+
+    font-size: .65rem;
+
+    font-weight: 700;
+
+    text-transform: uppercase;
+  }
+
+  .timeline-content h3 {
+    margin-top: .8rem;
+
+    font-size: var(--text-2xl);
+
+    letter-spacing: -.025em;
+  }
+
+  .timeline-content strong {
+    display: block;
+
+    margin-top: .3rem;
+
+    color: var(--color-text-secondary);
+  }
+
+  .location {
+    display: flex;
+
+    align-items: center;
+
+    gap: .35rem;
+
+    margin-top: .65rem;
+
+    color: var(--color-text-muted);
+
+    font-size: .78rem;
+  }
+
+  .timeline-content > p {
+    margin-top: 1rem;
+
+    color: var(--color-text-muted);
+
+    line-height: 1.7;
+  }
+
+
+  /* =========================================
+     EDUCATION
+  ========================================== */
+
+  .education-grid {
+    display: grid;
+
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+
+    gap: 1rem;
+  }
+
+  .education-card {
+    position: relative;
+
+    padding: 1.5rem;
+
+    overflow: hidden;
+
+    background: var(--color-surface);
+
+    border: 1px solid var(--color-border);
+
+    border-radius: var(--radius-lg);
+  }
+
+  .card-number {
+    position: absolute;
+
+    top: 1rem;
+    right: 1rem;
+
+    color: var(--color-text-muted);
+
+    font-family: var(--font-mono);
+
+    font-size: .65rem;
+  }
+
+  .education-icon {
+    display: grid;
+
+    place-items: center;
+
+    width: 46px;
+    height: 46px;
+
+    color: var(--color-primary);
+
+    background:
+      rgba(29, 185, 84, .08);
+
+    border-radius: var(--radius-md);
+  }
+
+  .education-card .period {
+    display: block;
+
+    margin-top: 1.5rem;
+
+    color: var(--color-primary);
+
+    font-family: var(--font-mono);
+
+    font-size: .65rem;
+  }
+
+  .education-card h3 {
+    margin-top: .6rem;
+
+    font-size: var(--text-xl);
+
+    letter-spacing: -.025em;
+  }
+
+  .education-card strong {
+    display: block;
+
+    margin-top: .4rem;
+
+    color: var(--color-text-secondary);
+
+    font-size: var(--text-sm);
+  }
+
+  .education-card p {
+    margin-top: .8rem;
+
+    color: var(--color-text-muted);
+
+    font-size: .85rem;
+
+    line-height: 1.7;
+  }
+
+
+  /* =========================================
+     SKILLS
+  ========================================== */
+
+  .skills-grid {
+    display: grid;
+
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+
+    gap: 1rem;
+  }
+
+  .skill-card {
+    padding: 1.5rem;
+
+    background: var(--color-surface);
+
+    border: 1px solid var(--color-border);
+
+    border-radius: var(--radius-lg);
+  }
+
+  .skill-header {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+  }
+
+  .skill-icon {
+    display: grid;
+
+    place-items: center;
+
+    width: 44px;
+    height: 44px;
+
+    color: var(--color-primary);
+
+    background:
+      rgba(29, 185, 84, .08);
+
+    border-radius: var(--radius-md);
+  }
+
+  .skill-header > span {
+    color: var(--color-text-muted);
+
+    font-family: var(--font-mono);
+
+    font-size: .65rem;
+  }
+
+  .skill-card h3 {
+    margin-top: 1.25rem;
+
+    font-size: var(--text-xl);
+  }
+
+  .skill-list {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: .4rem;
+
+    margin-top: 1rem;
+  }
+
+  .skill-list span {
+    padding: .4rem .6rem;
+
+    color: var(--color-text-secondary);
+
+    background: var(--color-background);
+
+    border: 1px solid var(--color-border);
+
+    border-radius: 999px;
+
+    font-family: var(--font-mono);
+
+    font-size: .65rem;
+  }
+
+
+  /* =========================================
+     LANGUAGES
+  ========================================== */
+
+  .languages-layout {
+    display: grid;
+
+    grid-template-columns:
+      .8fr 1.2fr;
+
+    gap: var(--space-16);
+  }
+
+  .languages-list {
+    display: grid;
+
+    grid-template-columns:
+      repeat(2, 1fr);
+
+    gap: .6rem;
+  }
+
+  .language {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 1rem;
+
+    padding: 1rem;
+
+    background: var(--color-surface);
+
+    border: 1px solid var(--color-border);
+
+    border-radius: var(--radius-md);
+  }
+
+  .language-name {
+    display: flex;
+
+    align-items: center;
+
+    gap: .6rem;
+  }
+
+  .language-name svg {
+    color: var(--color-primary);
+  }
+
+  .language span {
+    color: var(--color-primary);
+
+    font-family: var(--font-mono);
+
+    font-size: .65rem;
+  }
+
+
+  /* =========================================
+     PROJECT HIGHLIGHT
+  ========================================== */
+
+  .project-highlight {
+    padding-block: var(--space-24);
+
+    border-top: 1px solid var(--color-border);
+  }
+
+  .project-highlight-card {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 3rem;
+
+    padding: clamp(
+      2rem,
+      5vw,
+      4rem
+    );
+
+    background:
+      linear-gradient(
+        135deg,
+        rgba(29, 185, 84, .1),
+        var(--color-surface)
+      );
+
+    border: 1px solid
+      rgba(29, 185, 84, .18);
+
+    border-radius: var(--radius-xl);
+  }
+
+  .project-highlight-card h2 {
+    margin-top: .25rem;
+
+    font-size: clamp(
+      2.5rem,
+      5vw,
+      4rem
+    );
+
+    letter-spacing: -.05em;
+  }
+
+  .project-highlight-card p {
+    max-width: 700px;
+
+    margin-top: .75rem;
+
+    color: var(--color-text-muted);
+
+    line-height: 1.7;
+  }
+
+  .project-link {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: .5rem;
+
+    flex-shrink: 0;
+
+    padding: .8rem 1rem;
+
+    color: var(--color-black);
+
+    background: var(--color-primary);
+
+    border-radius: var(--radius-md);
+
+    font-size: var(--text-sm);
+
+    font-weight: 700;
+  }
+
+
+  /* =========================================
+     RESPONSIVE
+  ========================================== */
+
+  @media (max-width: 900px) {
+
+    .hero-grid,
+    .identity-card,
+    .languages-layout {
+      grid-template-columns: 1fr;
+    }
+
+    .education-grid {
+      grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+    }
+
+    .skills-grid {
+      grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+    }
+
+    .project-highlight-card {
+      align-items: flex-start;
+
+      flex-direction: column;
+    }
+
+  }
+
+
+  @media (max-width: 600px) {
+
+    .about-hero,
+    .content-section,
+    .project-highlight {
+      padding-block: var(--space-16);
+    }
+
+    .hero-grid h1 {
+      font-size: 3rem;
+    }
+
+    .education-grid,
+    .skills-grid,
+    .languages-list {
+      grid-template-columns: 1fr;
+    }
+
+    .identity-card {
+      padding: 1.25rem;
+    }
+
+    .timeline-item {
+      gap: 1rem;
+    }
+
+    .timeline-content {
+      padding: 1.15rem;
+    }
+
+    .project-highlight-card {
+      padding: 1.5rem;
+    }
+
+  }
+
+</style>

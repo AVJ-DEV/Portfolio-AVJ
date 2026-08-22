@@ -1,0 +1,154 @@
+---
+import { Menu, X, Sun, Moon, Download } from "lucide-astro";
+---
+
+<header class="site-header">
+  <div class="container header-inner">
+
+    <a href="/" class="logo" aria-label="Accueil">
+      <span class="logo-mark">AVJ</span>
+
+      <span class="logo-text">
+        Venceslas
+      </span>
+    </a>
+
+    <nav class="desktop-nav" aria-label="Navigation principale">
+      <a href="/" class="nav-link">Accueil</a>
+      <a href="/about" class="nav-link">À propos</a>
+      <a href="/about#competences" class="nav-link">Compétences</a>
+      <a href="/projects" class="nav-link">Projets</a>
+      <a href="/about#experience" class="nav-link">Expériences</a>
+      <a href="/#contact" class="nav-link">Contact</a>
+    </nav>
+
+    <div class="header-actions">
+
+      <a
+        href="/documents/cv.pdf"
+        class="cv-button"
+        download
+      >
+        <Download size={16} strokeWidth={2} />
+        <span>Mon CV</span>
+      </a>
+
+      <button
+        class="theme-toggle"
+        type="button"
+        data-theme-toggle
+        aria-label="Changer de thème"
+      >
+        <Sun
+          class="theme-icon theme-icon-light"
+          size={19}
+          strokeWidth={2}
+        />
+
+        <Moon
+          class="theme-icon theme-icon-dark"
+          size={19}
+          strokeWidth={2}
+        />
+      </button>
+
+      <button
+        class="mobile-menu-button"
+        type="button"
+        data-menu-toggle
+        aria-label="Ouvrir le menu"
+        aria-expanded="false"
+      >
+        <Menu
+          class="menu-open-icon"
+          size={24}
+          strokeWidth={2}
+        />
+
+        <X
+          class="menu-close-icon"
+          size={24}
+          strokeWidth={2}
+        />
+      </button>
+
+    </div>
+  </div>
+
+  <div class="mobile-menu" data-mobile-menu>
+    <nav aria-label="Navigation mobile">
+
+      <a href="/" class="mobile-nav-link">
+        Accueil
+      </a>
+
+      <a href="/about" class="mobile-nav-link">
+        À propos
+      </a>
+
+      <a href="/about#competences" class="mobile-nav-link">
+        Compétences
+      </a>
+
+      <a href="/projects" class="mobile-nav-link">
+        Projets
+      </a>
+
+      <a href="/about#experience" class="mobile-nav-link">
+        Expériences
+      </a>
+
+      <a href="/#contact" class="mobile-nav-link">
+        Contact
+      </a>
+
+      <a
+        href="/documents/cv.pdf"
+        class="mobile-cv-button"
+        download
+      >
+        <Download size={17} />
+        Télécharger mon CV
+      </a>
+
+    </nav>
+  </div>
+</header>
+
+<script>
+  const menuButton = document.querySelector(
+    "[data-menu-toggle]"
+  );
+
+  const mobileMenu = document.querySelector(
+    "[data-mobile-menu]"
+  );
+
+  menuButton?.addEventListener("click", () => {
+    const isOpen =
+      menuButton.getAttribute("aria-expanded") === "true";
+
+    menuButton.setAttribute(
+      "aria-expanded",
+      String(!isOpen)
+    );
+
+    mobileMenu?.classList.toggle(
+      "is-open",
+      !isOpen
+    );
+  });
+
+  document
+    .querySelectorAll(".mobile-nav-link")
+    .forEach((link) => {
+      link.addEventListener("click", () => {
+        menuButton?.setAttribute(
+          "aria-expanded",
+          "false"
+        );
+
+        mobileMenu?.classList.remove("is-open");
+      });
+    });
+</script>

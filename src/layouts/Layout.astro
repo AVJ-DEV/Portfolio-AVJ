@@ -1,0 +1,82 @@
+---
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Venceslas Jean de Dieu AGBEMATCHI | Développeur Web & Mobile",
+  description = "Portfolio de Venceslas Jean de Dieu AGBEMATCHI, développeur web et mobile et enseignant en informatique.",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+
+    <meta name="description" content={description} />
+
+    <meta name="author" content="Venceslas Jean de Dieu AGBEMATCHI" />
+
+    <meta name="theme-color" content="#0B0F14" />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <title>{title}</title>
+  </head>
+
+  <body id="top">
+    <a class="skip-link" href="#main-content">
+      Aller au contenu
+    </a>
+
+    <Header />
+
+    <main id="main-content">
+      <slot />
+    </main>
+
+    <Footer />
+
+    <script>
+      const themeToggle = document.querySelector(
+        "[data-theme-toggle]"
+      );
+
+      const savedTheme = localStorage.getItem("theme");
+
+      if (
+        savedTheme === "light" ||
+        savedTheme === "dark"
+      ) {
+        document.documentElement.dataset.theme = savedTheme;
+      }
+
+      themeToggle?.addEventListener("click", () => {
+        const currentTheme =
+          document.documentElement.dataset.theme === "light"
+            ? "light"
+            : "dark";
+
+        const newTheme =
+          currentTheme === "dark"
+            ? "light"
+            : "dark";
+
+        document.documentElement.dataset.theme = newTheme;
+
+        localStorage.setItem("theme", newTheme);
+      });
+    </script>
+  </body>
+</html>
