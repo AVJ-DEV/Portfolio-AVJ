@@ -1,25 +1,16 @@
 ---
-import {
-  Github,
-  Mail,
-  ArrowUp,
-} from "lucide-astro";
+import { Github, Mail, ArrowUp } from "lucide-astro";
+import { withBase } from "../utils/site";
 ---
 
 <footer class="site-footer">
-
   <div class="container">
-
     <div class="footer-top">
-
       <div class="footer-brand">
-
-        <a href="/" class="logo">
+        <a href={withBase("/")} class="logo">
           <span class="logo-mark">AVJ</span>
 
-          <span class="logo-text">
-            Venceslas
-          </span>
+          <span class="logo-text"> Venceslas </span>
         </a>
 
         <p>
@@ -27,30 +18,24 @@ import {
           <br />
           Enseignant en Informatique
         </p>
-
       </div>
 
       <div class="footer-navigation">
-
         <h3>Navigation</h3>
 
-        <a href="/about">À propos</a>
-        <a href="/about#competences">Compétences</a>
-        <a href="/projects">Projets</a>
-        <a href="/about#experience">Expériences</a>
-        <a href="/#contact">Contact</a>
-
+        <a href={withBase("/about")}>À propos</a>
+        <a href={withBase("/about#competences")}>Compétences</a>
+        <a href={withBase("/projects")}>Projets</a>
+        <a href={withBase("/about#experience")}>Expériences</a>
+        <a href={withBase("/#contact")}>Contact</a>
       </div>
 
       <div class="footer-contact">
-
         <h3>Me contacter</h3>
 
         <a href="mailto:agbematchiavj@gmail.com">
           <Mail size={17} />
-          <span>
-            agbematchiavj@gmail.com
-          </span>
+          <span> agbematchiavj@gmail.com </span>
         </a>
 
         <a
@@ -59,33 +44,20 @@ import {
           rel="noopener noreferrer"
         >
           <Github size={17} />
-          <span>
-            GitHub
-          </span>
+          <span> GitHub </span>
         </a>
-
       </div>
-
     </div>
 
     <div class="footer-bottom">
-
       <p>
         © {new Date().getFullYear()}
-        Venceslas Jean de Dieu AGBEMATCHI.
-        Tous droits réservés.
+        Venceslas Jean de Dieu AGBEMATCHI. Tous droits réservés.
       </p>
 
-      <a
-        href="#top"
-        class="back-to-top"
-        aria-label="Retour en haut"
-      >
+      <a href="#top" class="back-to-top" aria-label="Retour en haut">
         <ArrowUp size={18} />
       </a>
-
     </div>
-
   </div>
-
 </footer>

@@ -13,10 +13,9 @@ import {
 
 import Layout from "../../layouts/Layout.astro";
 import { projects } from "../../data/projects";
+import { withBase } from "../../utils/site";
 
-const project = projects.find(
-  (item) => item.slug === "ecotrack"
-);
+const project = projects.find((item) => item.slug === "ecotrack");
 
 if (!project) {
   throw new Error("Projet EcoTrack introuvable.");
@@ -27,19 +26,12 @@ if (!project) {
   title={`${project.title} | Portfolio Venceslas AGBEMATCHI`}
   description={project.subtitle}
 >
-
   <main>
-
     <!-- HERO -->
 
     <section class="project-hero">
-
       <div class="container">
-
-        <a
-          href="/projects"
-          class="back-link"
-        >
+        <a href={withBase("/projects")} class="back-link">
           <ArrowLeft size={17} />
           Retour aux projets
         </a>
@@ -57,445 +49,287 @@ if (!project) {
         </p>
 
         <div class="hero-tags">
-
           <span>{project.category}</span>
           <span>{project.year}</span>
-
         </div>
-
       </div>
-
     </section>
-
 
     <!-- PROJECT OVERVIEW -->
 
     <section class="overview-section">
-
       <div class="container">
-
         <div class="overview-grid">
-
           <div class="overview-main">
-
             <div class="section-eyebrow">
               <span></span>
               LE PROJET
             </div>
 
-            <h2>
-              Une solution numérique
-              au service de l'environnement.
-            </h2>
+            <h2>Une solution numérique au service de l'environnement.</h2>
 
             <p>
               {project.longDescription}
             </p>
-
           </div>
 
-
           <aside class="project-facts">
-
             <div class="fact">
-
               <Smartphone size={20} />
 
               <div>
                 <span>Type</span>
                 <strong>Web & Mobile</strong>
               </div>
-
             </div>
 
             <div class="fact">
-
               <MapPin size={20} />
 
               <div>
                 <span>Contexte</span>
                 <strong>Bénin</strong>
               </div>
-
             </div>
 
             <div class="fact">
-
               <Users size={20} />
 
               <div>
                 <span>Utilisateurs</span>
                 <strong>Multi-rôles</strong>
               </div>
-
             </div>
 
             <div class="fact">
-
               <Database size={20} />
 
               <div>
                 <span>Backend</span>
                 <strong>API + MySQL</strong>
               </div>
-
             </div>
-
           </aside>
-
         </div>
-
       </div>
-
     </section>
-
 
     <!-- PROBLEM / SOLUTION -->
 
     <section class="problem-section">
-
       <div class="container">
-
         <div class="problem-grid">
-
           <article>
+            <span class="number"> 01 </span>
 
-            <span class="number">
-              01
-            </span>
-
-            <h2>
-              Le problème
-            </h2>
+            <h2>Le problème</h2>
 
             <p>
               {project.problem}
             </p>
-
           </article>
 
-
           <article>
+            <span class="number"> 02 </span>
 
-            <span class="number">
-              02
-            </span>
-
-            <h2>
-              La solution
-            </h2>
+            <h2>La solution</h2>
 
             <p>
               {project.solution}
             </p>
-
           </article>
-
         </div>
-
       </div>
-
     </section>
-
 
     <!-- FEATURES -->
 
     <section class="features-section">
-
       <div class="container">
-
         <div class="section-header">
-
           <div class="section-eyebrow">
             <span></span>
             FONCTIONNALITÉS
           </div>
 
-          <h2>
-            Une plateforme pensée
-            autour de plusieurs acteurs.
-          </h2>
-
+          <h2>Une plateforme pensée autour de plusieurs acteurs.</h2>
         </div>
-
 
         <div class="features-grid">
-
           {
             project.features.map((feature) => (
-
               <div class="feature">
-
                 <CheckCircle2 size={18} />
 
-                <span>
-                  {feature}
-                </span>
-
+                <span>{feature}</span>
               </div>
-
             ))
           }
-
         </div>
-
       </div>
-
     </section>
-
 
     <!-- ROLES -->
 
     <section class="roles-section">
-
       <div class="container">
-
         <div class="section-header">
-
           <div class="section-eyebrow">
             <span></span>
             UTILISATEURS
           </div>
 
-          <h2>
-            Une architecture multi-rôles.
-          </h2>
-
+          <h2>Une architecture multi-rôles.</h2>
         </div>
 
-
         <div class="roles-grid">
-
           {
             project.roles.map((role) => (
-
               <article class="role-card">
-
                 <div class="role-icon">
                   <Users size={20} />
                 </div>
 
-                <h3>
-                  {role.name}
-                </h3>
+                <h3>{role.name}</h3>
 
-                <p>
-                  {role.description}
-                </p>
-
+                <p>{role.description}</p>
               </article>
-
             ))
           }
-
         </div>
-
       </div>
-
     </section>
-
 
     <!-- TECHNOLOGIES -->
 
     <section class="tech-section">
-
       <div class="container">
-
         <div class="tech-grid">
-
           <div>
-
             <div class="section-eyebrow">
               <span></span>
               TECHNOLOGIES
             </div>
 
-            <h2>
-              Stack technique.
-            </h2>
+            <h2>Stack technique.</h2>
 
             <p>
-              Une architecture séparant l'application
-              mobile, l'API et la base de données.
+              Une architecture séparant l'application mobile, l'API et la base
+              de données.
             </p>
-
           </div>
-
 
           <div class="tech-list">
-
             {
               project.technologies.map((technology) => (
-
                 <div class="tech-item">
-
                   <Code2 size={17} />
 
-                  <span>
-                    {technology}
-                  </span>
-
+                  <span>{technology}</span>
                 </div>
-
               ))
             }
-
           </div>
-
         </div>
-
       </div>
-
     </section>
-
 
     <!-- ARCHITECTURE -->
 
     <section class="architecture-section">
-
       <div class="container">
-
         <div class="section-header">
-
           <div class="section-eyebrow">
             <span></span>
             ARCHITECTURE
           </div>
 
-          <h2>
-            Une architecture organisée
-            par responsabilités.
-          </h2>
-
+          <h2>Une architecture organisée par responsabilités.</h2>
         </div>
-
 
         <div class="architecture">
-
           {
             project.architecture.map((item, index) => (
-
               <div class="architecture-item">
+                <span>0{index + 1}</span>
 
-                <span>
-                  0{index + 1}
-                </span>
-
-                <strong>
-                  {item}
-                </strong>
-
+                <strong>{item}</strong>
               </div>
-
             ))
           }
-
         </div>
-
       </div>
-
     </section>
-
 
     <!-- SCREENSHOTS -->
 
     <section class="screenshots-section">
-
       <div class="container">
-
         <div class="section-header">
-
           <div class="section-eyebrow">
             <span></span>
             CAPTURES
           </div>
 
-          <h2>
-            EcoTrack en images.
-          </h2>
+          <h2>EcoTrack en images.</h2>
 
           <p>
-            Les interfaces seront présentées ici
-            dès que les captures définitives du projet
-            seront intégrées au portfolio.
+            Découvrez les principaux écrans de l'application et le parcours de
+            signalement des incidents.
           </p>
-
         </div>
 
-
         <div class="screenshots-grid">
-
-        {
+          {
             project.screenshots.map((screenshot, index) => (
-
-            <figure class:list={{ "screenshot-featured": index === 0 }}>
-
+              <figure class:list={{ "screenshot-featured": index === 0 }}>
                 <button
-                type="button"
-                class="screenshot-button"
-                data-image={screenshot.src}
-                data-alt={screenshot.alt}
-                aria-label={`Agrandir : ${screenshot.caption}`}
+                  type="button"
+                  class="screenshot-button"
+                  data-image={withBase(screenshot.src)}
+                  data-alt={screenshot.alt}
+                  data-caption={screenshot.caption}
+                  aria-label={`Agrandir : ${screenshot.caption}`}
                 >
-                <img
-                    src={screenshot.src}
+                  <img
+                    src={withBase(screenshot.src)}
                     alt={screenshot.alt}
                     loading={index === 0 ? "eager" : "lazy"}
                     decoding="async"
-                />
+                  />
 
-                <span class="zoom-indicator">
+                  <span class="zoom-indicator">
                     <ArrowUpRight size={18} />
-                </span>
+                  </span>
                 </button>
 
-                <figcaption>
-                {screenshot.caption}
-                </figcaption>
-
-            </figure>
-
+                <figcaption>{screenshot.caption}</figcaption>
+              </figure>
             ))
-        }
-
+          }
         </div>
-
       </div>
-
     </section>
-
 
     <!-- CTA -->
 
     <section class="project-cta">
-
       <div class="container">
-
         <div class="cta">
-
           <div>
+            <span> ECO TRACK </span>
 
-            <span>
-              ECO TRACK
-            </span>
-
-            <h2>
-              Intéressé par le projet ?
-            </h2>
+            <h2>Intéressé par le projet ?</h2>
 
             <p>
-              Explorez le code source ou découvrez
-              les autres projets de mon portfolio.
+              Explorez le code source ou découvrez les autres projets de mon
+              portfolio.
             </p>
-
           </div>
 
-
           <div class="cta-actions">
-
             {
               project.links.github && (
-
                 <a
                   href={project.links.github}
                   target="_blank"
@@ -506,61 +340,37 @@ if (!project) {
                   Voir sur GitHub
                   <ArrowUpRight size={16} />
                 </a>
-
               )
             }
 
-            <a
-              href="/projects"
-              class="back-button"
-            >
+            <a href={withBase("/projects")} class="back-button">
               Tous les projets
             </a>
-
           </div>
-
         </div>
-
       </div>
-
     </section>
 
-    <div
-        class="image-modal"
-        id="image-modal"
-        aria-hidden="true"
-        >
+    <div class="image-modal" id="image-modal" aria-hidden="true">
+      <button
+        type="button"
+        class="modal-close"
+        id="modal-close"
+        aria-label="Fermer l'image"
+      >
+        ×
+      </button>
 
-        <button
-            type="button"
-            class="modal-close"
-            id="modal-close"
-            aria-label="Fermer l'image"
-        >
-            ×
-        </button>
+      <div class="modal-content">
+        <img id="modal-image" src="" alt="" />
 
-        <div class="modal-content">
-
-            <img
-            id="modal-image"
-            src=""
-            alt=""
-            />
-
-            <p id="modal-caption"></p>
-
-        </div>
-
+        <p id="modal-caption"></p>
+      </div>
     </div>
-
   </main>
-
 </Layout>
 
-
 <style>
-
   .project-hero {
     padding-block: 5rem 6rem;
 
@@ -571,7 +381,7 @@ if (!project) {
     display: inline-flex;
     align-items: center;
 
-    gap: .45rem;
+    gap: 0.45rem;
 
     color: var(--color-text-muted);
 
@@ -587,21 +397,19 @@ if (!project) {
 
     margin-top: 4rem;
 
-    padding: .4rem .7rem;
+    padding: 0.4rem 0.7rem;
 
     color: var(--color-primary);
 
-    background:
-      rgba(29,185,84,.08);
+    background: rgba(29, 185, 84, 0.08);
 
-    border: 1px solid
-      rgba(29,185,84,.15);
+    border: 1px solid rgba(29, 185, 84, 0.15);
 
     border-radius: 999px;
 
     font-family: var(--font-mono);
 
-    font-size: .68rem;
+    font-size: 0.68rem;
 
     font-weight: 700;
   }
@@ -609,15 +417,11 @@ if (!project) {
   .project-hero h1 {
     margin-top: 1rem;
 
-    font-size: clamp(
-      4rem,
-      10vw,
-      8rem
-    );
+    font-size: clamp(4rem, 10vw, 8rem);
 
-    letter-spacing: -.07em;
+    letter-spacing: -0.07em;
 
-    line-height: .9;
+    line-height: 0.9;
   }
 
   .project-subtitle {
@@ -627,11 +431,7 @@ if (!project) {
 
     color: var(--color-text-muted);
 
-    font-size: clamp(
-      1.1rem,
-      2vw,
-      1.4rem
-    );
+    font-size: clamp(1.1rem, 2vw, 1.4rem);
 
     line-height: 1.7;
   }
@@ -640,13 +440,13 @@ if (!project) {
     display: flex;
     flex-wrap: wrap;
 
-    gap: .5rem;
+    gap: 0.5rem;
 
     margin-top: 2rem;
   }
 
   .hero-tags span {
-    padding: .45rem .7rem;
+    padding: 0.45rem 0.7rem;
 
     color: var(--color-text-secondary);
 
@@ -656,7 +456,6 @@ if (!project) {
 
     font-size: var(--text-xs);
   }
-
 
   .overview-section,
   .problem-section,
@@ -671,8 +470,7 @@ if (!project) {
   .overview-grid {
     display: grid;
 
-    grid-template-columns:
-      1.2fr .8fr;
+    grid-template-columns: 1.2fr 0.8fr;
 
     gap: var(--space-16);
   }
@@ -681,7 +479,7 @@ if (!project) {
     display: inline-flex;
     align-items: center;
 
-    gap: .55rem;
+    gap: 0.55rem;
 
     margin-bottom: 1rem;
 
@@ -693,7 +491,7 @@ if (!project) {
 
     font-weight: 700;
 
-    letter-spacing: .08em;
+    letter-spacing: 0.08em;
   }
 
   .section-eyebrow span {
@@ -708,13 +506,9 @@ if (!project) {
   .tech-grid h2 {
     max-width: 750px;
 
-    font-size: clamp(
-      2rem,
-      4vw,
-      3.4rem
-    );
+    font-size: clamp(2rem, 4vw, 3.4rem);
 
-    letter-spacing: -.045em;
+    letter-spacing: -0.045em;
 
     line-height: 1.05;
   }
@@ -734,7 +528,7 @@ if (!project) {
   .project-facts {
     display: grid;
 
-    gap: .75rem;
+    gap: 0.75rem;
   }
 
   .fact {
@@ -742,7 +536,7 @@ if (!project) {
 
     align-items: center;
 
-    gap: .9rem;
+    gap: 0.9rem;
 
     padding: 1rem;
 
@@ -762,17 +556,16 @@ if (!project) {
 
     color: var(--color-text-muted);
 
-    font-size: .7rem;
+    font-size: 0.7rem;
   }
 
   .fact strong {
     display: block;
 
-    margin-top: .2rem;
+    margin-top: 0.2rem;
 
     font-size: var(--text-sm);
   }
-
 
   .problem-section,
   .roles-section,
@@ -801,7 +594,7 @@ if (!project) {
 
     font-family: var(--font-mono);
 
-    font-size: .75rem;
+    font-size: 0.75rem;
   }
 
   .problem-grid h2 {
@@ -818,7 +611,6 @@ if (!project) {
     line-height: 1.8;
   }
 
-
   .section-header {
     max-width: 800px;
 
@@ -833,20 +625,18 @@ if (!project) {
     line-height: 1.7;
   }
 
-
   .features-grid {
     display: grid;
 
-    grid-template-columns:
-      repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr);
 
-    gap: .75rem;
+    gap: 0.75rem;
   }
 
   .feature {
     display: flex;
 
-    gap: .65rem;
+    gap: 0.65rem;
 
     align-items: flex-start;
 
@@ -869,12 +659,10 @@ if (!project) {
     color: var(--color-primary);
   }
 
-
   .roles-grid {
     display: grid;
 
-    grid-template-columns:
-      repeat(4, 1fr);
+    grid-template-columns: repeat(4, 1fr);
 
     gap: 1rem;
   }
@@ -899,8 +687,7 @@ if (!project) {
 
     margin-bottom: 1.2rem;
 
-    background:
-      rgba(29,185,84,.08);
+    background: rgba(29, 185, 84, 0.08);
 
     color: var(--color-primary);
 
@@ -912,7 +699,7 @@ if (!project) {
   }
 
   .role-card p {
-    margin-top: .7rem;
+    margin-top: 0.7rem;
 
     color: var(--color-text-muted);
 
@@ -921,12 +708,10 @@ if (!project) {
     line-height: 1.7;
   }
 
-
   .tech-grid {
     display: grid;
 
-    grid-template-columns:
-      .8fr 1.2fr;
+    grid-template-columns: 0.8fr 1.2fr;
 
     gap: var(--space-16);
 
@@ -946,7 +731,7 @@ if (!project) {
 
     grid-template-columns: 1fr 1fr;
 
-    gap: .75rem;
+    gap: 0.75rem;
   }
 
   .tech-item {
@@ -954,7 +739,7 @@ if (!project) {
 
     align-items: center;
 
-    gap: .7rem;
+    gap: 0.7rem;
 
     padding: 1rem;
 
@@ -969,14 +754,12 @@ if (!project) {
     color: var(--color-primary);
   }
 
-
   .architecture {
     display: grid;
 
-    grid-template-columns:
-      repeat(5, 1fr);
+    grid-template-columns: repeat(5, 1fr);
 
-    gap: .75rem;
+    gap: 0.75rem;
   }
 
   .architecture-item {
@@ -994,7 +777,7 @@ if (!project) {
 
     font-family: var(--font-mono);
 
-    font-size: .7rem;
+    font-size: 0.7rem;
   }
 
   .architecture-item strong {
@@ -1007,7 +790,6 @@ if (!project) {
     line-height: 1.5;
   }
 
-
   .screenshots-section {
     background: var(--color-surface);
   }
@@ -1015,8 +797,7 @@ if (!project) {
   .screenshots-grid {
     display: grid;
 
-    grid-template-columns:
-      1fr 1fr;
+    grid-template-columns: 1fr 1fr;
 
     gap: 1rem;
   }
@@ -1025,125 +806,123 @@ if (!project) {
     margin: 0;
   }
 
-.screenshots-grid {
-  display: grid;
+  .screenshots-grid {
+    display: grid;
 
-  grid-template-columns:
-    repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
 
-  gap: 1.5rem;
-}
+    gap: 1.5rem;
+  }
 
-.screenshots-grid figure {
-  margin: 0;
-}
+  .screenshots-grid figure {
+    margin: 0;
+  }
 
-.screenshot-button {
-  position: relative;
+  .screenshot-button {
+    position: relative;
 
-  display: block;
+    display: block;
 
-  width: 100%;
+    width: 100%;
 
-  padding: 0;
+    padding: 0;
 
-  overflow: hidden;
+    overflow: hidden;
 
-  background: var(--color-background);
+    background: var(--color-background);
 
-  border: 1px solid var(--color-border);
+    border: 1px solid var(--color-border);
 
-  border-radius: var(--radius-xl);
+    border-radius: var(--radius-xl);
 
-  cursor: zoom-in;
+    cursor: zoom-in;
 
-  text-align: left;
-}
+    text-align: left;
+  }
 
-.screenshot-button img {
-  display: block;
+  .screenshot-button img {
+    display: block;
 
-  width: 100%;
-  height: 520px;
+    width: 100%;
+    height: 520px;
 
-  object-fit: contain;
+    object-fit: contain;
 
-  background:
-    linear-gradient(
+    background: linear-gradient(
       145deg,
       var(--color-surface),
       var(--color-background)
     );
 
-  transition:
-    transform .5s ease,
-    filter .5s ease;
-}
+    transition:
+      transform 0.5s ease,
+      filter 0.5s ease;
+  }
 
-.screenshot-button:hover img {
-  transform: scale(1.025);
+  .screenshot-button:hover img {
+    transform: scale(1.025);
 
-  filter: brightness(.88);
-}
+    filter: brightness(0.88);
+  }
 
-.zoom-indicator {
-  position: absolute;
+  .zoom-indicator {
+    position: absolute;
 
-  right: 1rem;
-  bottom: 1rem;
+    right: 1rem;
+    bottom: 1rem;
 
-  display: grid;
+    display: grid;
 
-  place-items: center;
+    place-items: center;
 
-  width: 42px;
-  height: 42px;
+    width: 42px;
+    height: 42px;
 
-  color: var(--color-black);
+    color: var(--color-black);
 
-  background: var(--color-primary);
+    background: var(--color-primary);
 
-  border-radius: 50%;
+    border-radius: 50%;
 
-  opacity: 0;
+    opacity: 0;
 
-  transform: translateY(8px);
+    transform: translateY(8px);
 
-  transition:
-    opacity .3s ease,
-    transform .3s ease;
-}
+    transition:
+      opacity 0.3s ease,
+      transform 0.3s ease;
+  }
 
-.screenshot-button:hover .zoom-indicator,
-.screenshot-button:focus-visible .zoom-indicator {
-  opacity: 1;
+  .screenshot-button:hover .zoom-indicator,
+  .screenshot-button:focus-visible .zoom-indicator {
+    opacity: 1;
 
-  transform: translateY(0);
-}
+    transform: translateY(0);
+  }
 
-.screenshot-button:focus-visible {
-  outline: 2px solid var(--color-primary);
+  .screenshot-button:focus-visible {
+    outline: 2px solid var(--color-primary);
 
-  outline-offset: 4px;
-}
+    outline-offset: 4px;
+  }
 
-.screenshots-grid figcaption {
-  margin-top: .8rem;
+  .screenshots-grid figcaption {
+    margin-top: 0.8rem;
 
-  color: var(--color-text-muted);
+    color: var(--color-text-muted);
 
-  font-size: var(--text-sm);
+    font-size: var(--text-sm);
 
-  line-height: 1.5;
-}
+    line-height: 1.5;
+  }
 
-.screenshot-featured {
-  grid-column: 1 / -1;
-}
+  .screenshot-featured {
+    grid-column: 1 / -1;
+  }
 
-.screenshot-featured .screenshot-button img {
-  height: 600px;
-}
+  .screenshot-featured .screenshot-button img {
+    height: 600px;
+  }
 
   .screenshot-placeholder svg {
     color: var(--color-primary);
@@ -1163,13 +942,12 @@ if (!project) {
   }
 
   figcaption {
-    margin-top: .75rem;
+    margin-top: 0.75rem;
 
     color: var(--color-text-muted);
 
     font-size: var(--text-sm);
   }
-
 
   .project-cta {
     padding-block: 0 var(--space-24);
@@ -1186,15 +964,13 @@ if (!project) {
 
     padding: 3rem;
 
-    background:
-      linear-gradient(
-        135deg,
-        rgba(29,185,84,.12),
-        var(--color-surface)
-      );
+    background: linear-gradient(
+      135deg,
+      rgba(29, 185, 84, 0.12),
+      var(--color-surface)
+    );
 
-    border: 1px solid
-      rgba(29,185,84,.18);
+    border: 1px solid rgba(29, 185, 84, 0.18);
 
     border-radius: var(--radius-xl);
   }
@@ -1204,19 +980,19 @@ if (!project) {
 
     font-family: var(--font-mono);
 
-    font-size: .7rem;
+    font-size: 0.7rem;
 
     font-weight: 700;
   }
 
   .cta h2 {
-    margin-top: .5rem;
+    margin-top: 0.5rem;
 
     font-size: var(--text-2xl);
   }
 
   .cta p {
-    margin-top: .7rem;
+    margin-top: 0.7rem;
 
     color: var(--color-text-muted);
   }
@@ -1226,7 +1002,7 @@ if (!project) {
 
     flex-shrink: 0;
 
-    gap: .75rem;
+    gap: 0.75rem;
   }
 
   .github-button,
@@ -1235,11 +1011,11 @@ if (!project) {
 
     align-items: center;
 
-    gap: .5rem;
+    gap: 0.5rem;
 
     min-height: 46px;
 
-    padding: .7rem 1rem;
+    padding: 0.7rem 1rem;
 
     border-radius: var(--radius-md);
 
@@ -1262,24 +1038,17 @@ if (!project) {
     border: 1px solid var(--color-border);
   }
 
-
   @media (max-width: 1000px) {
-
     .roles-grid {
-      grid-template-columns:
-        1fr 1fr;
+      grid-template-columns: 1fr 1fr;
     }
 
     .architecture {
-      grid-template-columns:
-        1fr 1fr;
+      grid-template-columns: 1fr 1fr;
     }
-
   }
 
-
   @media (max-width: 800px) {
-
     .overview-grid,
     .problem-grid,
     .tech-grid {
@@ -1287,8 +1056,7 @@ if (!project) {
     }
 
     .features-grid {
-      grid-template-columns:
-        1fr 1fr;
+      grid-template-columns: 1fr 1fr;
     }
 
     .cta {
@@ -1296,12 +1064,9 @@ if (!project) {
 
       flex-direction: column;
     }
-
   }
 
-
   @media (max-width: 600px) {
-
     .project-hero {
       padding-block: 4rem;
     }
@@ -1342,144 +1107,137 @@ if (!project) {
     }
 
     .image-modal {
-        position: fixed;
+      position: fixed;
 
-        inset: 0;
+      inset: 0;
 
-        z-index: 1000;
+      z-index: 1000;
 
-        display: flex;
+      display: flex;
 
-        align-items: center;
+      align-items: center;
 
-        justify-content: center;
+      justify-content: center;
 
-        padding: 2rem;
+      padding: 2rem;
 
-        background:
-            rgba(0, 0, 0, .88);
+      background: rgba(0, 0, 0, 0.88);
 
-        opacity: 0;
+      opacity: 0;
 
-        visibility: hidden;
+      visibility: hidden;
 
-        pointer-events: none;
+      pointer-events: none;
 
-        transition:
-            opacity .25s ease,
-            visibility .25s ease;
-        }
+      transition:
+        opacity 0.25s ease,
+        visibility 0.25s ease;
+    }
 
-        .image-modal[aria-hidden="false"] {
-        opacity: 1;
+    .image-modal[aria-hidden="false"] {
+      opacity: 1;
 
-        visibility: visible;
+      visibility: visible;
 
-        pointer-events: auto;
-        }
+      pointer-events: auto;
+    }
 
-        .modal-content {
-        position: relative;
+    .modal-content {
+      position: relative;
 
-        display: flex;
+      display: flex;
 
-        flex-direction: column;
+      flex-direction: column;
 
-        align-items: center;
+      align-items: center;
 
-        max-width: 1100px;
-        max-height: 95vh;
-        }
+      max-width: 1100px;
+      max-height: 95vh;
+    }
 
-        .modal-content img {
-        display: block;
+    .modal-content img {
+      display: block;
 
-        max-width: 90vw;
-        max-height: 82vh;
+      max-width: 90vw;
+      max-height: 82vh;
 
-        width: auto;
-        height: auto;
+      width: auto;
+      height: auto;
 
-        object-fit: contain;
+      object-fit: contain;
 
-        border-radius: var(--radius-lg);
+      border-radius: var(--radius-lg);
 
-        box-shadow:
-            0 30px 100px rgba(0, 0, 0, .5);
-        }
+      box-shadow: 0 30px 100px rgba(0, 0, 0, 0.5);
+    }
 
-        .modal-content p {
-        margin-top: 1rem;
+    .modal-content p {
+      margin-top: 1rem;
 
-        color: white;
+      color: white;
 
-        text-align: center;
+      text-align: center;
 
-        font-size: var(--text-sm);
-        }
+      font-size: var(--text-sm);
+    }
 
-        .modal-close {
-        position: fixed;
+    .modal-close {
+      position: fixed;
 
-        top: 1.5rem;
-        right: 1.5rem;
+      top: 1.5rem;
+      right: 1.5rem;
 
-        z-index: 1001;
+      z-index: 1001;
 
-        display: grid;
+      display: grid;
 
-        place-items: center;
+      place-items: center;
 
-        width: 44px;
-        height: 44px;
+      width: 44px;
+      height: 44px;
 
-        padding: 0;
+      padding: 0;
 
-        color: white;
+      color: white;
 
-        background:
-            rgba(255, 255, 255, .12);
+      background: rgba(255, 255, 255, 0.12);
 
-        border: 1px solid
-            rgba(255, 255, 255, .2);
+      border: 1px solid rgba(255, 255, 255, 0.2);
 
-        border-radius: 50%;
+      border-radius: 50%;
 
-        font-size: 2rem;
+      font-size: 2rem;
 
-        line-height: 1;
+      line-height: 1;
 
-        cursor: pointer;
+      cursor: pointer;
 
-        transition:
-            background .2s ease,
-            transform .2s ease;
-        }
+      transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+    }
 
-        .modal-close:hover {
-        background:
-            rgba(255, 255, 255, .2);
+    .modal-close:hover {
+      background: rgba(255, 255, 255, 0.2);
 
-        transform: rotate(90deg);
-        }
+      transform: rotate(90deg);
+    }
 
-        @media (max-width: 600px) {
+    @media (max-width: 600px) {
+      .image-modal {
+        padding: 1rem;
+      }
 
-        .image-modal {
-            padding: 1rem;
-        }
+      .modal-content img {
+        max-width: 94vw;
 
-        .modal-content img {
-            max-width: 94vw;
+        max-height: 80vh;
+      }
 
-            max-height: 80vh;
-        }
-
-        .modal-close {
-            top: 1rem;
-            right: 1rem;
-        }
-
+      .modal-close {
+        top: 1rem;
+        right: 1rem;
+      }
     }
 
     .github-button,
@@ -1488,36 +1246,26 @@ if (!project) {
 
       width: 100%;
     }
-
   }
-
 </style>
 
-
 <script>
-  const modal =
-    document.querySelector("#image-modal");
+  const modal = document.querySelector("#image-modal");
 
-  const modalImage =
-    document.querySelector("#modal-image");
+  const modalImage = document.querySelector("#modal-image");
 
-  const modalCaption =
-    document.querySelector("#modal-caption");
+  const modalCaption = document.querySelector("#modal-caption");
 
-  const modalClose =
-    document.querySelector("#modal-close");
+  const modalClose = document.querySelector("#modal-close");
 
-  const screenshotButtons =
-    document.querySelectorAll(".screenshot-button");
+  const screenshotButtons = document.querySelectorAll(".screenshot-button");
 
-  function openModal(
-    imageSrc: string,
-    imageAlt: string
-  ) {
+  function openModal(imageSrc: string, imageAlt: string, caption: string) {
     if (!modal || !modalImage) return;
 
     modalImage.setAttribute("src", imageSrc);
     modalImage.setAttribute("alt", imageAlt);
+    modalCaption?.replaceChildren(caption);
 
     modal.setAttribute("aria-hidden", "false");
 
@@ -1530,51 +1278,35 @@ if (!project) {
     modal.setAttribute("aria-hidden", "true");
 
     modalImage.setAttribute("src", "");
+    modalCaption?.replaceChildren();
 
     document.body.style.overflow = "";
   }
 
   screenshotButtons.forEach((button) => {
-
     button.addEventListener("click", () => {
+      const imageSrc = button.getAttribute("data-image");
 
-      const imageSrc =
-        button.getAttribute("data-image");
+      const imageAlt = button.getAttribute("data-alt");
+      const imageCaption = button.getAttribute("data-caption");
 
-      const imageAlt =
-        button.getAttribute("data-alt");
+      if (!imageSrc || !imageAlt || !imageCaption) return;
 
-      if (!imageSrc || !imageAlt) return;
-
-      openModal(imageSrc, imageAlt);
+      openModal(imageSrc, imageAlt, imageCaption);
     });
-
   });
 
-  modalClose?.addEventListener(
-    "click",
-    closeModal
-  );
+  modalClose?.addEventListener("click", closeModal);
 
-  modal?.addEventListener(
-    "click",
-    (event) => {
-
-      if (event.target === modal) {
-        closeModal();
-      }
-
+  modal?.addEventListener("click", (event) => {
+    if (event.target === modal) {
+      closeModal();
     }
-  );
+  });
 
-  document.addEventListener(
-    "keydown",
-    (event) => {
-
-      if (event.key === "Escape") {
-        closeModal();
-      }
-
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeModal();
     }
-  );
+  });
 </script>

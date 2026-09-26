@@ -1,0 +1,253 @@
+---
+import Layout from "../layouts/Layout.astro";
+import {
+    ArrowUpRight,
+    Mail,
+    MessageCircle,
+    Phone,
+    Copy,
+    Check,
+} from "lucide-astro";
+---
+
+<Layout
+    title="Contact | Venceslas Jean de Dieu AGBEMATCHI"
+    description="Contactez Venceslas Jean de Dieu AGBEMATCHI pour une collaboration, un projet ou une opportunité professionnelle."
+>
+    <main>
+        <section class="contact-page">
+            <div class="container contact-shell">
+                <div class="section-eyebrow">
+                    <span></span>
+                    CONTACT
+                </div>
+
+                <div class="contact-header">
+                    <h1>Parlons de votre projet</h1>
+                    <p>
+                        Vous avez une idée, un besoin numérique ou une
+                        opportunité de collaboration ? Je suis disponible pour
+                        échanger et vous accompagner.
+                    </p>
+                </div>
+
+                <div class="contact-grid">
+                    <a
+                        href="mailto:agbematchiavj@gmail.com"
+                        class="contact-card"
+                    >
+                        <div class="icon-wrap">
+                            <Mail size={22} />
+                        </div>
+                        <div>
+                            <span>Email</span>
+                            <strong>agbematchiavj@gmail.com</strong>
+                        </div>
+                        <ArrowUpRight size={18} />
+                    </a>
+
+                    <a
+                        href="https://wa.me/2290157801588"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="contact-card"
+                    >
+                        <div class="icon-wrap">
+                            <MessageCircle size={22} />
+                        </div>
+                        <div>
+                            <span>WhatsApp</span>
+                            <strong>+229 01 57 80 15 88</strong>
+                        </div>
+                        <ArrowUpRight size={18} />
+                    </a>
+
+                    <a href="tel:+2290141451727" class="contact-card">
+                        <div class="icon-wrap">
+                            <Phone size={22} />
+                        </div>
+                        <div>
+                            <span>Téléphone</span>
+                            <strong>+229 01 41 45 17 27</strong>
+                        </div>
+                        <ArrowUpRight size={18} />
+                    </a>
+
+                    <a href="tel:+2290193300043" class="contact-card">
+                        <div class="icon-wrap">
+                            <Phone size={22} />
+                        </div>
+                        <div>
+                            <span>Second numéro</span>
+                            <strong>+229 01 93 30 00 43</strong>
+                        </div>
+                        <ArrowUpRight size={18} />
+                    </a>
+                </div>
+
+                <div class="contact-actions">
+                    <button
+                        type="button"
+                        class="copy-email"
+                        data-email="agbematchiavj@gmail.com"
+                    >
+                        <Copy size={15} />
+                        Copier mon email
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+</Layout>
+
+<script>
+    const copyButton = document.querySelector(".copy-email");
+
+    copyButton?.addEventListener("click", async () => {
+        const email = copyButton.getAttribute("data-email");
+
+        if (!email) return;
+
+        try {
+            await navigator.clipboard.writeText(email);
+            copyButton.innerHTML = `
+        <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5 9 16.5 19 6.5"/></svg></span>
+        Email copié
+      `;
+
+            setTimeout(() => {
+                copyButton.innerHTML = `
+          <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 9h6v6H9z"/><path d="M5 5h10v2"/><path d="M15 5h4v14H5V15"/></svg></span>
+          Copier mon email
+        `;
+            }, 2000);
+        } catch {
+            window.location.href = `mailto:${email}`;
+        }
+    });
+</script>
+
+<style>
+    .contact-page {
+        padding-block: clamp(6rem, 12vw, 10rem) var(--space-24);
+    }
+
+    .contact-shell {
+        display: grid;
+        gap: var(--space-10);
+    }
+
+    .section-eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.55rem;
+        color: var(--color-primary);
+        font-family: var(--font-mono);
+        font-size: var(--text-xs);
+        font-weight: 700;
+        letter-spacing: 0.08em;
+    }
+
+    .section-eyebrow span {
+        width: 24px;
+        height: 2px;
+        background: var(--color-primary);
+        border-radius: 999px;
+    }
+
+    .contact-header {
+        display: grid;
+        gap: 1rem;
+        max-width: 720px;
+    }
+
+    .contact-header h1 {
+        font-size: clamp(2.6rem, 6vw, 4.5rem);
+        line-height: 1.05;
+    }
+
+    .contact-header p {
+        color: var(--color-text-muted);
+        font-size: 1.05rem;
+    }
+
+    .contact-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+
+    .contact-card {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        align-items: center;
+        gap: 1rem;
+        padding: 1.2rem 1.3rem;
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-lg);
+        color: var(--color-text);
+        transition:
+            transform var(--transition-fast),
+            border-color var(--transition-fast);
+    }
+
+    .contact-card:hover {
+        transform: translateY(-2px);
+        border-color: var(--color-primary);
+    }
+
+    .icon-wrap {
+        display: grid;
+        place-items: center;
+        width: 52px;
+        height: 52px;
+        border-radius: 14px;
+        background: rgba(126, 211, 33, 0.12);
+        color: var(--color-primary);
+    }
+
+    .contact-card span {
+        display: block;
+        color: var(--color-text-muted);
+        font-size: var(--text-xs);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        margin-bottom: 0.2rem;
+    }
+
+    .contact-card strong {
+        font-size: 1rem;
+    }
+
+    .contact-actions {
+        margin-top: 0.5rem;
+    }
+
+    .copy-email {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+        padding: 0.9rem 1.2rem;
+        border: 1px solid var(--color-border);
+        border-radius: 999px;
+        background: transparent;
+        color: var(--color-text);
+        cursor: pointer;
+        transition:
+            border-color var(--transition-fast),
+            transform var(--transition-fast);
+    }
+
+    .copy-email:hover {
+        border-color: var(--color-primary);
+        transform: translateY(-1px);
+    }
+
+    @media (max-width: 760px) {
+        .contact-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>

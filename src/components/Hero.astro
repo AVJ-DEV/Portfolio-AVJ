@@ -1,11 +1,6 @@
 ---
-import {
-  ArrowDown,
-  ArrowRight,
-  Github,
-  Mail,
-  MapPin,
-} from "lucide-astro";
+import { ArrowDown, ArrowRight, Github, Mail, MapPin } from "lucide-astro";
+import { withBase } from "../utils/site";
 ---
 
 <section class="hero" id="home">
@@ -16,20 +11,14 @@ import {
   </div>
 
   <div class="container hero-container">
-
     <div class="hero-content">
-
       <div class="hero-badge">
         <span class="status-dot"></span>
 
-        <span>
-          Disponible pour de nouveaux projets
-        </span>
+        <span> Disponible pour de nouveaux projets </span>
       </div>
 
-      <p class="hero-intro">
-        Bonjour, je suis
-      </p>
+      <p class="hero-intro">Bonjour, je suis</p>
 
       <h1 class="hero-title">
         Venceslas Jean de Dieu
@@ -37,45 +26,31 @@ import {
       </h1>
 
       <div class="hero-role">
-        <span class="role-primary">
-          Développeur Web & Mobile
-        </span>
+        <span class="role-primary"> Développeur Web & Mobile </span>
 
         <span class="role-separator">·</span>
 
-        <span>
-          Enseignant en Informatique
-        </span>
+        <span> Enseignant en Informatique </span>
       </div>
 
       <p class="hero-description">
-        Je conçois des solutions numériques modernes
-        et je transmets mes compétences à travers
-        l'enseignement et la formation.
+        Je conçois des solutions numériques modernes et je transmets mes
+        compétences à travers l'enseignement et la formation.
       </p>
 
       <div class="hero-actions">
-
-        <a
-          href="/projects"
-          class="button button-primary"
-        >
+        <a href={withBase("/projects")} class="button button-primary">
           Voir mes projets
           <ArrowRight size={18} />
         </a>
 
-        <a
-          href="/contact"
-          class="button button-secondary"
-        >
+        <a href={withBase("/contact")} class="button button-secondary">
           Me contacter
           <Mail size={18} />
         </a>
-
       </div>
 
       <div class="hero-meta">
-
         <a
           href="https://github.com/AVJ-DEV"
           target="_blank"
@@ -86,10 +61,7 @@ import {
           <span>AVJ-DEV</span>
         </a>
 
-        <a
-          href="mailto:agbematchiavj@gmail.com"
-          class="hero-social"
-        >
+        <a href="mailto:agbematchiavj@gmail.com" class="hero-social">
           <Mail size={18} />
           <span>Email</span>
         </a>
@@ -98,15 +70,11 @@ import {
           <MapPin size={18} />
           <span>Bénin</span>
         </div>
-
       </div>
-
     </div>
 
     <div class="hero-visual">
-
       <div class="hero-image-wrapper">
-
         <div class="hero-image-decoration decoration-one"></div>
         <div class="hero-image-decoration decoration-two"></div>
 
@@ -114,7 +82,7 @@ import {
 
         <div class="hero-image">
           <img
-            src="/images/profile/avatar.jpg"
+            src={withBase("/images/profile/avatar.jpg")}
             alt="Venceslas Jean de Dieu AGBEMATCHI"
             width="600"
             height="750"
@@ -129,11 +97,8 @@ import {
         <div class="code-card code-card-bottom">
           <span>Flutter</span>
         </div>
-
       </div>
-
     </div>
-
   </div>
 
   <a
@@ -175,37 +140,18 @@ import {
     opacity: 0.35;
 
     background-image:
-      linear-gradient(
-        rgba(255, 255, 255, 0.035) 1px,
-        transparent 1px
-      ),
-      linear-gradient(
-        90deg,
-        rgba(255, 255, 255, 0.035) 1px,
-        transparent 1px
-      );
+      linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
 
     background-size: 50px 50px;
 
-    mask-image:
-      linear-gradient(
-        to bottom,
-        black,
-        transparent 90%
-      );
+    mask-image: linear-gradient(to bottom, black, transparent 90%);
   }
 
   :global(:root[data-theme="light"]) .hero-grid {
     background-image:
-      linear-gradient(
-        rgba(15, 23, 42, 0.04) 1px,
-        transparent 1px
-      ),
-      linear-gradient(
-        90deg,
-        rgba(15, 23, 42, 0.04) 1px,
-        transparent 1px
-      );
+      linear-gradient(rgba(15, 23, 42, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(15, 23, 42, 0.04) 1px, transparent 1px);
   }
 
   .hero-glow {
@@ -287,8 +233,7 @@ import {
 
     border-radius: 50%;
 
-    box-shadow:
-      0 0 0 4px rgba(29, 185, 84, 0.1);
+    box-shadow: 0 0 0 4px rgba(29, 185, 84, 0.1);
 
     animation: pulse-dot 2s infinite;
   }
@@ -305,25 +250,19 @@ import {
 
     letter-spacing: 0.04em;
 
-    animation:
-      hero-fade-up 0.6s 0.1s ease both;
+    animation: hero-fade-up 0.6s 0.1s ease both;
   }
 
   .hero-title {
     max-width: 850px;
 
-    font-size: clamp(
-      2.6rem,
-      6vw,
-      5.4rem
-    );
+    font-size: clamp(2.6rem, 6vw, 5.4rem);
 
     letter-spacing: -0.055em;
 
     line-height: 0.98;
 
-    animation:
-      hero-fade-up 0.7s 0.15s ease both;
+    animation: hero-fade-up 0.7s 0.15s ease both;
   }
 
   .hero-title span {
@@ -343,16 +282,11 @@ import {
 
     color: var(--color-text-secondary);
 
-    font-size: clamp(
-      1rem,
-      2vw,
-      1.25rem
-    );
+    font-size: clamp(1rem, 2vw, 1.25rem);
 
     font-weight: 500;
 
-    animation:
-      hero-fade-up 0.7s 0.25s ease both;
+    animation: hero-fade-up 0.7s 0.25s ease both;
   }
 
   .role-primary {
@@ -375,8 +309,7 @@ import {
 
     line-height: 1.8;
 
-    animation:
-      hero-fade-up 0.7s 0.35s ease both;
+    animation: hero-fade-up 0.7s 0.35s ease both;
   }
 
   .hero-actions {
@@ -387,8 +320,7 @@ import {
 
     margin-top: var(--space-8);
 
-    animation:
-      hero-fade-up 0.7s 0.45s ease both;
+    animation: hero-fade-up 0.7s 0.45s ease both;
   }
 
   .button {
@@ -424,8 +356,7 @@ import {
 
     transform: translateY(-2px);
 
-    box-shadow:
-      0 10px 25px rgba(29, 185, 84, 0.18);
+    box-shadow: 0 10px 25px rgba(29, 185, 84, 0.18);
   }
 
   .button-secondary {
@@ -453,8 +384,7 @@ import {
 
     margin-top: var(--space-8);
 
-    animation:
-      hero-fade-up 0.7s 0.55s ease both;
+    animation: hero-fade-up 0.7s 0.55s ease both;
   }
 
   .hero-social,
@@ -488,8 +418,7 @@ import {
     display: flex;
     justify-content: center;
 
-    animation:
-      hero-image-in 0.9s 0.2s ease both;
+    animation: hero-image-in 0.9s 0.2s ease both;
   }
 
   .hero-image-wrapper {
@@ -509,11 +438,7 @@ import {
 
     background: var(--color-surface);
 
-    border-radius:
-      var(--radius-xl)
-      var(--radius-xl)
-      5rem
-      var(--radius-xl);
+    border-radius: var(--radius-xl) var(--radius-xl) 5rem var(--radius-xl);
 
     border: 1px solid var(--color-border);
 
@@ -543,11 +468,7 @@ import {
 
     border: 2px solid var(--color-primary);
 
-    border-radius:
-      var(--radius-xl)
-      var(--radius-xl)
-      5rem
-      var(--radius-xl);
+    border-radius: var(--radius-xl) var(--radius-xl) 5rem var(--radius-xl);
 
     transform: rotate(4deg);
 
@@ -650,8 +571,7 @@ import {
 
     transform: translateX(-50%);
 
-    animation:
-      scroll-bounce 2s infinite;
+    animation: scroll-bounce 2s infinite;
 
     transition: color var(--transition-fast);
   }
@@ -687,28 +607,22 @@ import {
   @keyframes pulse-dot {
     0%,
     100% {
-      box-shadow:
-        0 0 0 4px rgba(29, 185, 84, 0.1);
+      box-shadow: 0 0 0 4px rgba(29, 185, 84, 0.1);
     }
 
     50% {
-      box-shadow:
-        0 0 0 8px rgba(29, 185, 84, 0.04);
+      box-shadow: 0 0 0 8px rgba(29, 185, 84, 0.04);
     }
   }
 
   @keyframes scroll-bounce {
     0%,
     100% {
-      transform:
-        translateX(-50%)
-        translateY(0);
+      transform: translateX(-50%) translateY(0);
     }
 
     50% {
-      transform:
-        translateX(-50%)
-        translateY(6px);
+      transform: translateX(-50%) translateY(6px);
     }
   }
 
@@ -772,11 +686,7 @@ import {
     }
 
     .hero-title {
-      font-size: clamp(
-        2.45rem,
-        12vw,
-        4rem
-      );
+      font-size: clamp(2.45rem, 12vw, 4rem);
     }
 
     .hero-role {
@@ -802,10 +712,7 @@ import {
     }
 
     .hero-image-wrapper {
-      width: min(
-        100%,
-        360px
-      );
+      width: min(100%, 360px);
     }
 
     .code-card-top {

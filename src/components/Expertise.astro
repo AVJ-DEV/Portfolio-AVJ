@@ -10,162 +10,92 @@ import {
 } from "lucide-astro";
 
 import { expertiseCategories } from "../data/expertise";
+import { withBase } from "../utils/site";
 
-const icons = [
-  Code2,
-  Smartphone,
-  Server,
-  Database,
-  Wrench,
-  GraduationCap,
-];
+const icons = [Code2, Smartphone, Server, Database, Wrench, GraduationCap];
 ---
 
-<section
-  class="expertise-section"
-  id="expertise"
->
-
+<section class="expertise-section" id="expertise">
   <div class="container">
-
     <div class="expertise-heading">
-
       <div class="section-eyebrow">
         <span></span>
         MON EXPERTISE
       </div>
 
       <div class="heading-grid">
-
-        <h2>
-          Des compétences
-          techniques au service
-          de projets concrets.
-        </h2>
+        <h2>Des compétences techniques au service de projets concrets.</h2>
 
         <p>
-          Je développe progressivement mon expertise
-          à travers des projets pratiques, le développement
-          d'applications et la transmission des connaissances
-          informatiques.
+          Je développe progressivement mon expertise à travers des projets
+          pratiques, le développement d'applications et la transmission des
+          connaissances informatiques.
         </p>
-
       </div>
-
     </div>
 
-
     <div class="expertise-grid">
-
       {
         expertiseCategories.map((category, index) => {
-
           const Icon = icons[index];
 
           return (
-
             <article class="expertise-card">
-
               <div class="card-top">
-
                 <div class="expertise-icon">
                   <Icon size={22} strokeWidth={1.8} />
                 </div>
 
-                <span class="card-number">
-                  0{index + 1}
-                </span>
-
+                <span class="card-number">0{index + 1}</span>
               </div>
 
+              <h3>{category.title}</h3>
 
-              <h3>
-                {category.title}
-              </h3>
-
-              <p class="category-description">
-                {category.description}
-              </p>
-
+              <p class="category-description">{category.description}</p>
 
               <div class="technology-list">
+                {category.technologies.map((technology) => (
+                  <div class="technology">
+                    <div class="technology-info">
+                      <strong>{technology.name}</strong>
 
-                {
-                  category.technologies.map((technology) => (
-
-                    <div class="technology">
-
-                      <div class="technology-info">
-
-                        <strong>
-                          {technology.name}
-                        </strong>
-
-                        <span>
-                          {technology.level}
-                        </span>
-
-                      </div>
-
-                      <p>
-                        {technology.description}
-                      </p>
-
+                      <span>{technology.level}</span>
                     </div>
 
-                  ))
-                }
-
+                    <p>{technology.description}</p>
+                  </div>
+                ))}
               </div>
-
             </article>
-
           );
         })
       }
-
     </div>
 
-
     <div class="expertise-footer">
-
       <div>
-
-        <span class="footer-label">
-          APPROCHE
-        </span>
+        <span class="footer-label"> APPROCHE </span>
 
         <p>
-          J'apprends en construisant, en expérimentant
-          et en transformant progressivement les idées
-          en solutions numériques fonctionnelles.
+          J'apprends en construisant, en expérimentant et en transformant
+          progressivement les idées en solutions numériques fonctionnelles.
         </p>
-
       </div>
 
-      <a
-        href="/projects"
-        class="expertise-link"
-      >
+      <a href={withBase("/projects")} class="expertise-link">
         Voir mes projets
         <ArrowUpRight size={17} />
       </a>
-
     </div>
-
   </div>
-
 </section>
 
-
 <style>
-
   .expertise-section {
     padding-block: var(--space-24);
 
     border-top: 1px solid var(--color-border);
   }
-
 
   /* --------------------------------
      HEADER
@@ -180,7 +110,7 @@ const icons = [
 
     align-items: center;
 
-    gap: .55rem;
+    gap: 0.55rem;
 
     margin-bottom: 1rem;
 
@@ -192,7 +122,7 @@ const icons = [
 
     font-weight: 700;
 
-    letter-spacing: .08em;
+    letter-spacing: 0.08em;
   }
 
   .section-eyebrow span {
@@ -207,8 +137,7 @@ const icons = [
   .heading-grid {
     display: grid;
 
-    grid-template-columns:
-      1.1fr .9fr;
+    grid-template-columns: 1.1fr 0.9fr;
 
     gap: var(--space-16);
 
@@ -218,13 +147,9 @@ const icons = [
   .heading-grid h2 {
     max-width: 800px;
 
-    font-size: clamp(
-      2.5rem,
-      5vw,
-      4.5rem
-    );
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
 
-    letter-spacing: -.055em;
+    letter-spacing: -0.055em;
 
     line-height: 1;
   }
@@ -239,7 +164,6 @@ const icons = [
     line-height: 1.8;
   }
 
-
   /* --------------------------------
      GRID
   -------------------------------- */
@@ -247,12 +171,10 @@ const icons = [
   .expertise-grid {
     display: grid;
 
-    grid-template-columns:
-      repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
 
     gap: 1rem;
   }
-
 
   /* --------------------------------
      CARD
@@ -268,19 +190,17 @@ const icons = [
     border-radius: var(--radius-xl);
 
     transition:
-      transform .3s ease,
-      border-color .3s ease,
-      box-shadow .3s ease;
+      transform 0.3s ease,
+      border-color 0.3s ease,
+      box-shadow 0.3s ease;
   }
 
   .expertise-card:hover {
     transform: translateY(-4px);
 
-    border-color:
-      rgba(29, 185, 84, .35);
+    border-color: rgba(29, 185, 84, 0.35);
 
-    box-shadow:
-      0 20px 50px rgba(0, 0, 0, .08);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
   }
 
   .card-top {
@@ -301,8 +221,7 @@ const icons = [
 
     color: var(--color-primary);
 
-    background:
-      rgba(29, 185, 84, .09);
+    background: rgba(29, 185, 84, 0.09);
 
     border-radius: var(--radius-md);
   }
@@ -312,7 +231,7 @@ const icons = [
 
     font-family: var(--font-mono);
 
-    font-size: .7rem;
+    font-size: 0.7rem;
   }
 
   .expertise-card h3 {
@@ -320,13 +239,13 @@ const icons = [
 
     font-size: var(--text-2xl);
 
-    letter-spacing: -.025em;
+    letter-spacing: -0.025em;
   }
 
   .category-description {
     max-width: 600px;
 
-    margin-top: .65rem;
+    margin-top: 0.65rem;
 
     color: var(--color-text-muted);
 
@@ -335,7 +254,6 @@ const icons = [
     line-height: 1.7;
   }
 
-
   /* --------------------------------
      TECHNOLOGIES
   -------------------------------- */
@@ -343,13 +261,13 @@ const icons = [
   .technology-list {
     display: grid;
 
-    gap: .5rem;
+    gap: 0.5rem;
 
     margin-top: 1.5rem;
   }
 
   .technology {
-    padding: .85rem 0;
+    padding: 0.85rem 0;
 
     border-top: 1px solid var(--color-border);
   }
@@ -373,7 +291,7 @@ const icons = [
 
     font-family: var(--font-mono);
 
-    font-size: .62rem;
+    font-size: 0.62rem;
 
     font-weight: 700;
 
@@ -381,15 +299,14 @@ const icons = [
   }
 
   .technology p {
-    margin-top: .3rem;
+    margin-top: 0.3rem;
 
     color: var(--color-text-muted);
 
-    font-size: .78rem;
+    font-size: 0.78rem;
 
     line-height: 1.6;
   }
-
 
   /* --------------------------------
      FOOTER
@@ -408,15 +325,13 @@ const icons = [
 
     padding: 2rem;
 
-    background:
-      linear-gradient(
-        135deg,
-        rgba(29, 185, 84, .09),
-        var(--color-surface)
-      );
+    background: linear-gradient(
+      135deg,
+      rgba(29, 185, 84, 0.09),
+      var(--color-surface)
+    );
 
-    border: 1px solid
-      rgba(29, 185, 84, .15);
+    border: 1px solid rgba(29, 185, 84, 0.15);
 
     border-radius: var(--radius-xl);
   }
@@ -426,17 +341,17 @@ const icons = [
 
     font-family: var(--font-mono);
 
-    font-size: .65rem;
+    font-size: 0.65rem;
 
     font-weight: 700;
 
-    letter-spacing: .08em;
+    letter-spacing: 0.08em;
   }
 
   .expertise-footer p {
     max-width: 700px;
 
-    margin-top: .5rem;
+    margin-top: 0.5rem;
 
     color: var(--color-text-muted);
 
@@ -448,13 +363,13 @@ const icons = [
 
     align-items: center;
 
-    gap: .5rem;
+    gap: 0.5rem;
 
     flex-shrink: 0;
 
     min-height: 44px;
 
-    padding: .7rem 1rem;
+    padding: 0.7rem 1rem;
 
     color: var(--color-black);
 
@@ -466,32 +381,26 @@ const icons = [
 
     font-weight: 700;
 
-    transition:
-      transform .2s ease;
+    transition: transform 0.2s ease;
   }
 
   .expertise-link:hover {
     transform: translateY(-2px);
   }
 
-
   /* --------------------------------
      RESPONSIVE
   -------------------------------- */
 
   @media (max-width: 900px) {
-
     .heading-grid {
       grid-template-columns: 1fr;
 
       gap: 1.5rem;
     }
-
   }
 
-
   @media (max-width: 700px) {
-
     .expertise-section {
       padding-block: var(--space-16);
     }
@@ -511,12 +420,9 @@ const icons = [
 
       justify-content: center;
     }
-
   }
 
-
   @media (max-width: 480px) {
-
     .expertise-card {
       padding: 1.25rem;
     }
@@ -524,7 +430,5 @@ const icons = [
     .heading-grid h2 {
       font-size: 2.5rem;
     }
-
   }
-
 </style>

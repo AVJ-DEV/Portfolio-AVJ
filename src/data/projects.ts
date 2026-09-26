@@ -89,31 +89,31 @@ export const projects = [
     ],
 
     screenshots: [
-    {
-        src: "/images/projects/ecotrack/mobile-home.png",
-        alt: "Écran d'accueil de l'application mobile EcoTrack",
-        caption: "Accueil et accès rapide aux principales fonctionnalités",
-    },
-    {
-        src: "/images/projects/ecotrack/incident.png",
-        alt: "Liste des incidents environnementaux EcoTrack",
-        caption: "Consultation et suivi des incidents signalés",
-    },
-    {
-        src: "/images/projects/ecotrack/map.png",
-        alt: "Interface de signalement d'un incident EcoTrack",
-        caption: "Parcours de signalement d'un incident environnemental",
-    },
-    {
+      {
         src: "/images/projects/ecotrack/dashboard.png",
-        alt: "Écran de connexion et présentation EcoTrack",
-        caption: "Écran d'accueil et d'accès à la communauté EcoTrack",
-    },
+        alt: "Tableau de bord EcoTrack avec les actions principales et l'activité récente",
+        caption: "Tableau de bord et accès rapide aux fonctions principales",
+      },
+      {
+        src: "/images/projects/ecotrack/mobile-home.png",
+        alt: "Écran de bienvenue EcoTrack avec les options d'inscription et de connexion",
+        caption: "Écran de bienvenue et accès à l'application",
+      },
+      {
+        src: "/images/projects/ecotrack/incident.png",
+        alt: "Liste des incidents environnementaux avec filtres et statuts de suivi",
+        caption: "Consultation et suivi des incidents signalés",
+      },
+      {
+        src: "/images/projects/ecotrack/map.png",
+        alt: "Étape de signalement EcoTrack pour choisir le type d'incident",
+        caption: "Parcours de signalement et sélection du type d'incident",
+      },
     ],
 
     links: {
-        github: "https://github.com/AVJ-DEV/EcoTrack",
-        demo: "",
+      github: "https://github.com/AVJ-DEV/EcoTrack",
+      demo: "",
     },
   },
 ];

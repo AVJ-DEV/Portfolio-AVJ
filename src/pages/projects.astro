@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import { ArrowUpRight, Github, Code2 } from "lucide-astro";
 import { projects } from "../data/projects";
+import { withBase } from "../utils/site";
 ---
 
 <Layout
@@ -94,7 +95,7 @@ import { projects } from "../data/projects";
                     {
                       cover ? (
                         <img
-                          src={cover.src}
+                          src={withBase(cover.src)}
                           alt={cover.alt}
                           loading={
                             index === 0
@@ -210,7 +211,7 @@ import { projects } from "../data/projects";
                     <div class="project-actions">
 
                       <a
-                        href={`/projects/${project.slug}`}
+                        href={withBase(`/projects/${project.slug}`)}
                         class="primary-button"
                       >
                         Voir le projet
@@ -283,7 +284,7 @@ import { projects } from "../data/projects";
 
 
           <a
-            href="/#contact"
+            href={withBase("/contact")}
             class="primary-button"
           >
             Me contacter
